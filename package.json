@@ -2,6 +2,7 @@
   "name": "grocery-list-app",
   "version": "1.0.0",
   "description": "A grocery list application for managing shopping list items.",
+  "type": "module",
   "main": "scripts/app.js",
   "scripts": {
     "test": "jest"
@@ -17,6 +18,10 @@
   },
   "homepage": "https://github.com/kcioffijr/grocery-list-application#readme",
   "devDependencies": {
-    "jest": "^29.7.0"
+    "@babel/core": "^7.23.6",
+    "@babel/preset-env": "^7.23.6",
+    "babel-jest": "^29.7.0",
+    "jest": "^29.7.0",
+    "jsdom": "^23.0.1"
   }
 }

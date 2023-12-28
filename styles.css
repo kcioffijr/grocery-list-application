@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300&display=swap');
+
+* {
+    font-family: 'Merriweather', sans-serif;
+}
+
+body {
+    box-sizing: border-box;
+    margin-inline: auto;
+    margin-block: 5vh;
+    max-inline-size: 500px;
+}
+
+header {
+    display: flex;
+    align-items: center;
+}
+
+#input-section {
+    border-bottom: 1px solid #ccc;
+    margin-block-end: 10px;
+}
+
+#input-section {
+    margin-block: 20px;
+}
+
+#add-list {
+    margin-block: 10px;
+}
+
+#input-section #add-list > * {
+    margin-block-end: 20px;
+}
+
+#logo {
+    width: 17.5%;
+    height: auto;
+    border-radius: 90px;
+    margin-inline-end: 10px;
+}
+
+main ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    padding-inline: 0;
+    margin-block-start: 4vh;
+}
+
+main ul .item {
+    display: flex;
+    margin-block-end: 25px;
+    padding-block: 15px;
+    padding-inline: 15px;
+    justify-content: space-between;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+#x {
+    color: red;
+    cursor: pointer;
+}
+
+#search {
+    border: none;
+}
+
+#clear-all {
+    width: 100%;
+}
+
+#clear-all:hover {
+    background-color: #f1f1f1;
+    color: black;
+}
+
+.btn {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #444;
+  }
+
+.input {
+    display: block;
+    font-size: 18px;
+    border-radius: 4px;
+    outline: none;
+    border: 1px solid #ccc;
+    width: 75%;
+}

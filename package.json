@@ -1,0 +1,22 @@
+{
+  "name": "grocery-list-app",
+  "version": "1.0.0",
+  "description": "A grocery list application for managing shopping list items.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kcioffijr/grocery-list-application.git"
+  },
+  "author": "Cioffi, Kevin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kcioffijr/grocery-list-application/issues"
+  },
+  "homepage": "https://github.com/kcioffijr/grocery-list-application#readme",
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}

@@ -3,7 +3,7 @@ export class GroceryItem {
         if (typeof name !== 'string') {
             throw new TypeError('Grocery item name should be of type string');
         }
-        this._name = name; // Assign the name to the instance variable
+        this._name = name;
     }
 
     get name() {

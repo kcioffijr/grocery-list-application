@@ -2,9 +2,9 @@
   "name": "grocery-list-app",
   "version": "1.0.0",
   "description": "A grocery list application for managing shopping list items.",
-  "main": "index.js",
+  "main": "scripts/app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "git",

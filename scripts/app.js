@@ -24,10 +24,22 @@ function addClassesToElement(element, ...classes) {
 
 function createButton() {
     let deleteButton = createElement('span');
-    addClassesToElement(deleteButton, 'fa-solid', 'fa-x');
+    addClassesToElement(deleteButton, 'remove-item', 'fa-solid', 'fa-x');
     deleteButton.setAttribute('id', 'x');
     return deleteButton;
 }
 
+function removeGroceryItemFromDOM(e) {
+    let groceryItem = e.target;
+    if (groceryItem.classList.contains('remove-item')) {
+        removeItem(groceryItem.parentElement);
+    }
+}
+
+function removeItem(item) {
+    item.remove();
+}
+
+groceryList.addEventListener('click', removeGroceryItemFromDOM);
 addItemButton.addEventListener('click', addItemToDOM);
 

@@ -59,8 +59,8 @@ function removeAllGroceryItemsFromDOM() {
     }
 }
 
-function removeGroceryItemFromDOM(e) {
-    let groceryItem = e.target;
+function removeGroceryItemFromDOM(event) {
+    let groceryItem = event.target;
     if (groceryItem.classList.contains('remove-item')) {
         removeItem(groceryItem.parentElement);
     }

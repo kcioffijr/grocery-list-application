@@ -3,6 +3,7 @@ let groceryList = document.getElementById('items');
     
 const itemToBeAdded = document.getElementById('add-item');
 const addItemButton = document.getElementById('add-item-btn');
+const clearAllButton = document.getElementById('clear-all');
 
 function addItemToDOM() {
     if (itemToBeAdded.value === '') {
@@ -49,6 +50,14 @@ function createButton() {
     return deleteButton;
 }
 
+function removeAllGroceryItemsFromDOM() {
+    if (window.confirm('This action will delete all grocery items, are you sure?')) {
+        groceryList.forEach(groceryItem, () => {
+            removeItem(groceryItem);
+        });
+    }
+}
+
 function removeGroceryItemFromDOM(e) {
     let groceryItem = e.target;
     if (groceryItem.classList.contains('remove-item')) {
@@ -60,6 +69,7 @@ function removeItem(item) {
     item.remove();
 }
 
-groceryList.addEventListener('click', removeGroceryItemFromDOM);
 addItemButton.addEventListener('click', addItemToDOM);
+clearAllButton.addEventListener('click', removeAllGroceryItemsFromDOM);
+groceryList.addEventListener('click', removeGroceryItemFromDOM);
 

@@ -13,6 +13,7 @@ function addItemToDOM() {
 
     addItemToGroceryList(itemToBeAdded.value);
     itemToBeAdded.value = '';
+    updateUI();
 }
 
 function addItemToGroceryList(item) {
@@ -56,6 +57,7 @@ function removeAllGroceryItemsFromDOM() {
             removeItem(groceryItem);
         });
     }
+    updateUI();
 }
 
 function removeGroceryItemFromDOM(event) {
@@ -63,6 +65,7 @@ function removeGroceryItemFromDOM(event) {
     if (groceryItem.classList.contains('remove-item')) {
         const itemTile = groceryItem.parentElement;
         removeItem(itemTile);
+        updateUI();
     }
 }
 
@@ -84,7 +87,23 @@ function filterGroceryItemsFromDOM(event) {
     });
 }
 
+function updateUI() {
+    let groceryItems = document.querySelectorAll('li');
+    let entrySection = document.getElementById('input-section');
+
+    if (groceryItems.length === 0) {
+        searchBar.style.display = 'none';
+        clearAllButton.style.display = 'none';
+        entrySection.style.borderBottom = 'none';
+    } else {
+        searchBar.style.display = 'flex';
+        clearAllButton.style.display = 'inline-block';
+        entrySection.style.borderBottom = '1px solid #ccc';
+    }
+}
+
 addItemButton.addEventListener('click', addItemToDOM);
 clearAllButton.addEventListener('click', removeAllGroceryItemsFromDOM);
 groceryList.addEventListener('click', removeGroceryItemFromDOM);
 searchBar.addEventListener('input', filterGroceryItemsFromDOM);
+addEventListener('DOMContentLoaded', updateUI);

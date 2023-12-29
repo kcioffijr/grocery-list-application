@@ -4,6 +4,7 @@ let groceryList = document.getElementById('items');
 const itemToBeAdded = document.getElementById('add-item');
 const addItemButton = document.getElementById('add-item-btn');
 const clearAllButton = document.getElementById('clear-all');
+const searchBar = document.getElementById('search');
 
 function addItemToDOM() {
     if (itemToBeAdded.value === '') {
@@ -69,7 +70,22 @@ function removeItem(item) {
     item.remove();
 }
 
+function filterGroceryItemsFromDOM(event) {
+    let groceryItems = document.querySelectorAll('li');
+    let searchText = event.target.value.toLowerCase();
+
+    groceryItems.forEach(item => {
+        let itemName = item.textContent.toLowerCase();
+        if (itemName.indexOf(searchText) !== -1) {
+            item.style.display = 'flex';
+        } else {
+            item.style.display = 'none';
+        }
+    });
+}
+
 addItemButton.addEventListener('click', addItemToDOM);
 clearAllButton.addEventListener('click', removeAllGroceryItemsFromDOM);
 groceryList.addEventListener('click', removeGroceryItemFromDOM);
+searchBar.addEventListener('input', filterGroceryItemsFromDOM);
 

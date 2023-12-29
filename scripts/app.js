@@ -5,13 +5,22 @@ const itemToBeAdded = document.getElementById('add-item');
 const addItemButton = document.getElementById('add-item-btn');
 
 function addItemToDOM() {
+
+    if (itemToBeAdded.value === '') {
+        alert('You must type the name of a grocery item to continue.');
+        return;
+    }
+
+    addItem(itemToBeAdded.value);
+    itemToBeAdded.value = '';
+}
+
+function addItem(item) {
     let itemToAdd = createElement('li');
     addClassesToElement(itemToAdd, 'item');
-    itemToAdd.appendChild(document.createTextNode(itemToBeAdded.value));
+    itemToAdd.appendChild(document.createTextNode(item));
     itemToAdd.appendChild(createButton());
     groceryList.appendChild(itemToAdd);
-
-    itemToBeAdded.value = '';
 }
 
 function createElement(tagName) {

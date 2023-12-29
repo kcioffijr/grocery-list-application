@@ -5,17 +5,16 @@ const itemToBeAdded = document.getElementById('add-item');
 const addItemButton = document.getElementById('add-item-btn');
 
 function addItemToDOM() {
-
     if (itemToBeAdded.value === '') {
         alert('You must type the name of a grocery item to continue.');
         return;
     }
 
-    addItem(itemToBeAdded.value);
+    addItemToGroceryList(itemToBeAdded.value);
     itemToBeAdded.value = '';
 }
 
-function addItem(item) {
+function addItemToGroceryList(item) {
     let itemToAdd = createElement('li');
     addClassesToElement(itemToAdd, 'item');
     itemToAdd.appendChild(document.createTextNode(item));
@@ -28,6 +27,18 @@ function createElement(tagName) {
 }
 
 function addClassesToElement(element, ...classes) {
+    if (!element instanceof HTMLElement) {
+        console.error('Invalid element provided.');
+        return;
+    }
+
+    classes.forEach(className => {
+        if (typeof className !== 'string') {
+            console.error('Class names need to be strings.');
+            return;
+        }
+    })
+
     element.classList.add(...classes);
 }
 

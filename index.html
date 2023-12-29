@@ -7,13 +7,13 @@
     <body>
         <header>
             <img id="logo" src="images/grocery_logo.svg" alt="The picture of the logo for the application.">
-            <h1>Grocery List</h1>
+            <h1>Basket Buddy</h1>
         </header>
 
         <section id="input-section">
             <form id="add-list" class="form">
                 <input id="add-item" type="text" class="input" placeholder="Add a grocery item">
-                <button type="submit" id="add-item-btn" class="btn">
+                <button type="button" id="add-item-btn" class="btn">
                     <span class="fa-solid fa-plus"></span>
                     Add Item
                 </button>
@@ -25,7 +25,7 @@
                 <input id="search" class="input" type="text" placeholder="Search List">
             </form>
 
-            <ul>
+            <ul id="items" class="grocery-list">
                 <li class="item">
                     Apples <span id="x" class="fa-solid fa-x"></span>
                 </li>
@@ -44,5 +44,6 @@
                 <button id="clear-all" class="btn">Clear All</button>
             </form>
         </main>
+        <script src="scripts/app.js"></script>
     </body>
 </html>

@@ -52,11 +52,11 @@ function createButton() {
 
 function removeAllGroceryItemsFromDOM() {
     if (confirm('You are about to remove all items from your grocery list, continue?')) {
-        groceryList.forEach(groceryItem => {
-            removeItem(groceryItem);
-        });
+        while (groceryList.firstChild) {
+            groceryList.removeChild(groceryList.firstChild);
+        }
+        updateUI();
     }
-    updateUI();
 }
 
 function removeGroceryItemFromDOM(event) {

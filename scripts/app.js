@@ -1,4 +1,3 @@
-
 const groceryList = document.getElementById('items');
 const itemToBeAdded = document.getElementById('add-item');
 const addItemButton = document.getElementById('add-item-btn');
@@ -39,7 +38,7 @@ function addClassesToElement(element, ...classes) {
             console.error('Class names need to be strings.');
             return;
         }
-    })
+    });
 
     element.classList.add(...classes);
 }
@@ -52,8 +51,8 @@ function createButton() {
 }
 
 function removeAllGroceryItemsFromDOM() {
-    if (window.confirm('This action will delete all grocery items, are you sure?')) {
-        groceryList.forEach(groceryItem, () => {
+    if (confirm('You are about to remove all items from your grocery list, continue?')) {
+        groceryList.forEach(groceryItem => {
             removeItem(groceryItem);
         });
     }
@@ -89,16 +88,18 @@ function filterGroceryItemsFromDOM(event) {
 
 function updateUI() {
     let groceryItems = document.querySelectorAll('li');
-    let entrySection = document.getElementById('input-section');
+    let inputSection = document.getElementById('input-section');
 
     if (groceryItems.length === 0) {
         searchBar.style.display = 'none';
         clearAllButton.style.display = 'none';
-        entrySection.style.borderBottom = 'none';
-    } else {
+        inputSection.style.borderBottom = 'none';
+    } else if (groceryItems.length >= 10) {
         searchBar.style.display = 'flex';
+    } else {
+        searchBar.style.display = 'none';
         clearAllButton.style.display = 'inline-block';
-        entrySection.style.borderBottom = '1px solid #ccc';
+        inputSection.style.borderBottom = '1px solid #ccc';
     }
 }
 

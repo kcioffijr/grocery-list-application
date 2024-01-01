@@ -91,13 +91,21 @@ function removeAllGroceryItemsFromDOM() {
     }
 }
 
-function removeGroceryItemFromDOM(event) {
+function removeGroceryItem(event) {
     let groceryItem = event.target; //button element
     if (groceryItem.classList.contains('remove-item')) {
-        const itemTile = groceryItem.parentElement; // removes the actual item 'tile' 
+        const itemTile = groceryItem.parentElement;
         itemTile.remove();
+        removeGroceryItemNameFromStorage(itemTile.textContent);
         adjustUIBasedOnGroceryItemCount();
     }
+}
+
+function removeGroceryItemNameFromStorage(itemName) {
+    let groceries = JSON.parse(retrieveGroceriesFromStorage());
+    const updatedGroceries = groceries.filter(item => item !== itemName);
+
+    localStorage.setItem('groceries', updatedGroceries);
 }
 
 /**
@@ -143,7 +151,7 @@ function adjustUIBasedOnGroceryItemCount() {
 function saveGroceryItemInStorage(groceryName) {
     let groceries = JSON.parse(retrieveGroceriesFromStorage());
 
-    if (groceryName !== null || groceryName !== '') {
+    if (groceryName !== null && groceryName !== '') {
         groceries.push(groceryName);
         localStorage.setItem('groceries', JSON.stringify(groceries));
     }
@@ -162,6 +170,6 @@ function retrieveGroceriesFromStorage() {
 addEventListener('DOMContentLoaded', populateDOMWithStorage);
 addItemButton.addEventListener('click', addItemToDOM);
 clearAllButton.addEventListener('click', removeAllGroceryItemsFromDOM);
-groceryList.addEventListener('click', removeGroceryItemFromDOM);
+groceryList.addEventListener('click', removeGroceryItem);
 searchBar.addEventListener('input', toggleGroceryItemsInDOMBasedOnSearch);
 addEventListener('DOMContentLoaded', adjustUIBasedOnGroceryItemCount);

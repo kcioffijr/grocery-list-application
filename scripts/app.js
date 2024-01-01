@@ -9,7 +9,7 @@ const searchBar = document.getElementById('search');
  * saved to storage will be added to the grocery list.
  */
 function populateDOMWithStorage() {
-    let groceries = JSON.parse(getStorage());
+    let groceries = JSON.parse(retrieveGroceriesFromStorage());
     
     if (groceries.length > 0) {
         groceries.forEach(item => groceryList.appendChild(createItemForGroceryList(item)));
@@ -32,7 +32,7 @@ function addItemToDOM() {
     groceryList.appendChild(createItemForGroceryList(itemToBeAdded.value));
     saveGroceryItemInStorage(itemToBeAdded.value);
     itemToBeAdded.value = '';
-    updateUI();
+    adjustUIBasedOnGroceryItemCount();
 }
 
 /**
@@ -87,7 +87,7 @@ function removeAllGroceryItemsFromDOM() {
         while (groceryList.firstChild) {
             groceryList.removeChild(groceryList.firstChild);
         }
-        updateUI();
+        adjustUIBasedOnGroceryItemCount();
     }
 }
 
@@ -136,7 +136,7 @@ function adjustUIBasedOnGroceryItemCount() {
 }
 
 function saveGroceryItemInStorage(groceryItem) {
-    let groceries = JSON.parse(getStorage());
+    let groceries = JSON.parse(retrieveGroceriesFromStorage());
 
     if (groceryItem !== null || groceryItem !== '') {
         groceries.push(groceryItem);
@@ -158,5 +158,5 @@ addEventListener('DOMContentLoaded', populateDOMWithStorage);
 addItemButton.addEventListener('click', addItemToDOM);
 clearAllButton.addEventListener('click', removeAllGroceryItemsFromDOM);
 groceryList.addEventListener('click', removeGroceryItemFromDOM);
-searchBar.addEventListener('input', filterGroceryItemsFromDOM);
-addEventListener('DOMContentLoaded', updateUI);
+searchBar.addEventListener('input', filterGroceryItemsInDOM);
+addEventListener('DOMContentLoaded', adjustUIBasedOnGroceryItemCount);

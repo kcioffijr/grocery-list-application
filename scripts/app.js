@@ -4,32 +4,48 @@ const addItemButton = document.getElementById('add-item-btn');
 const clearAllButton = document.getElementById('clear-all');
 const searchBar = document.getElementById('search');
 
+/**
+ * Upon loading the webpage, any groceries \
+ * saved to storage will be added to the grocery list.
+ */
+function populateDOMWithStorage() {
+    let groceries = JSON.parse(getStorage());
+    
+    if (groceries.length > 0) {
+        groceries.forEach(item => groceryList.appendChild(createItemForGroceryList(item)));
+    }
+}
+
+/**
+ * Wrapper function that handles adding \
+ * a grocery item to the DOM. 
+ * 
+ * The grocery item will also be saved to storage.
+ * @returns 
+ */
 function addItemToDOM() {
     if (itemToBeAdded.value === '') {
         alert('You must type the name of a grocery item to continue.');
         return;
     }
-
-    addItemToGroceryList(itemToBeAdded.value);
+    
+    groceryList.appendChild(createItemForGroceryList(itemToBeAdded.value));
     saveGroceryItemInStorage(itemToBeAdded.value);
     itemToBeAdded.value = '';
     updateUI();
 }
 
-function populateDOMFromStorage() {
-    let groceries = JSON.parse(getStorage());
-    
-    if (groceries.length > 0) {
-        groceries.forEach(item => addItemToGroceryList(item));
-    }
-}
-
-function addItemToGroceryList(item) {
+/**
+ * Creates the elements/nodes needed for \
+ * adding populating the grocery item in the list.
+ * @param {string} groceryItem 
+ */
+function createItemForGroceryList(groceryItem) {
     let itemToAdd = createElementBasedOnTagName('li');
     addClassesToElement(itemToAdd, 'item');
-    itemToAdd.appendChild(document.createTextNode(item));
+    itemToAdd.appendChild(document.createTextNode(groceryItem));
     itemToAdd.appendChild(createButton());
-    groceryList.appendChild(itemToAdd);
+    return itemToAdd;
 }
 
 function createElementBasedOnTagName(tagName) {
@@ -131,7 +147,7 @@ function getStorage() {
     return groceries;
 }
 
-addEventListener('DOMContentLoaded', populateDOMFromStorage);
+addEventListener('DOMContentLoaded', populateDOMWithStorage);
 addItemButton.addEventListener('click', addItemToDOM);
 clearAllButton.addEventListener('click', removeAllGroceryItemsFromDOM);
 groceryList.addEventListener('click', removeGroceryItemFromDOM);

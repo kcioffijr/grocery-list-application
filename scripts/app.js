@@ -11,6 +11,7 @@ function addItemToDOM() {
     }
 
     addItemToGroceryList(itemToBeAdded.value);
+    saveGroceryItemInStorage(itemToBeAdded.value);
     itemToBeAdded.value = '';
     updateUI();
 }
@@ -101,6 +102,25 @@ function updateUI() {
         clearAllButton.style.display = 'inline-block';
         inputSection.style.borderBottom = '1px solid #ccc';
     }
+}
+
+function saveGroceryItemInStorage(groceryItem) {
+    let groceries = JSON.parse(getStorage());
+
+    if (groceryItem !== null || groceryItem !== '') {
+        groceries.push(groceryItem);
+        localStorage.setItem('groceries', JSON.stringify(groceries));
+    }
+}
+
+function getStorage() {
+    let groceries = localStorage.getItem('groceries');
+
+    if (groceries === null) {
+        groceries = JSON.stringify([]);
+    }
+
+    return groceries;
 }
 
 addItemButton.addEventListener('click', addItemToDOM);

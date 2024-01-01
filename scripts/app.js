@@ -95,11 +95,16 @@ function removeGroceryItemFromDOM(event) {
     let groceryItem = event.target; //button element
     if (groceryItem.classList.contains('remove-item')) {
         const itemTile = groceryItem.parentElement; // removes the actual item 'tile' 
-        removeItem(itemTile);
+        itemTile.remove();
         adjustUIBasedOnGroceryItemCount();
     }
 }
 
+/**
+ * Helper method for removeGroceryItemFromDOM
+ * 
+ * @param {Element} item 
+ */
 function removeItem(item) {
     item.remove();
 }

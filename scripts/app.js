@@ -101,15 +101,11 @@ function removeGroceryItemFromDOM(event) {
 }
 
 /**
- * Helper method for removeGroceryItemFromDOM
- * 
- * @param {Element} item 
+ * Toggles the inner display of the grid items \
+ * when a user is searching for an item.
+ * @param {Event} event 
  */
-function removeItem(item) {
-    item.remove();
-}
-
-function filterGroceryItemsInDOM(event) {
+function toggleGroceryItemsInDOMBasedOnSearch(event) {
     let groceryItems = document.querySelectorAll('li');
     let searchText = event.target.value.toLowerCase();
 
@@ -163,5 +159,5 @@ addEventListener('DOMContentLoaded', populateDOMWithStorage);
 addItemButton.addEventListener('click', addItemToDOM);
 clearAllButton.addEventListener('click', removeAllGroceryItemsFromDOM);
 groceryList.addEventListener('click', removeGroceryItemFromDOM);
-searchBar.addEventListener('input', filterGroceryItemsInDOM);
+searchBar.addEventListener('input', toggleGroceryItemsInDOMBasedOnSearch);
 addEventListener('DOMContentLoaded', adjustUIBasedOnGroceryItemCount);

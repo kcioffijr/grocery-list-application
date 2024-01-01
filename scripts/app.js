@@ -118,7 +118,7 @@ function filterGroceryItemsInDOM(event) {
     });
 }
 
-function updateUI() {
+function adjustUIBasedOnGroceryItemCount() {
     let groceryItems = document.querySelectorAll('li');
     let inputSection = document.getElementById('input-section');
 

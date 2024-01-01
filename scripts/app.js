@@ -136,11 +136,15 @@ function adjustUIBasedOnGroceryItemCount() {
     }
 }
 
-function saveGroceryItemInStorage(groceryItem) {
+/**
+ * Saves the string of the grocery item in storage.
+ * @param {string} groceryName 
+ */
+function saveGroceryItemInStorage(groceryName) {
     let groceries = JSON.parse(retrieveGroceriesFromStorage());
 
-    if (groceryItem !== null || groceryItem !== '') {
-        groceries.push(groceryItem);
+    if (groceryName !== null || groceryName !== '') {
+        groceries.push(groceryName);
         localStorage.setItem('groceries', JSON.stringify(groceries));
     }
 }

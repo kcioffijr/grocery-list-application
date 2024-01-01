@@ -144,7 +144,7 @@ function saveGroceryItemInStorage(groceryItem) {
     }
 }
 
-function getStorage() {
+function retrieveGroceriesFromStorage() {
     let groceries = localStorage.getItem('groceries');
 
     if (groceries === null) {

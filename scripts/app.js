@@ -104,7 +104,7 @@ function removeItem(item) {
     item.remove();
 }
 
-function filterGroceryItemsFromDOM(event) {
+function filterGroceryItemsInDOM(event) {
     let groceryItems = document.querySelectorAll('li');
     let searchText = event.target.value.toLowerCase();
 

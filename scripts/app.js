@@ -16,6 +16,14 @@ function addItemToDOM() {
     updateUI();
 }
 
+function populateDOMFromStorage() {
+    let groceries = JSON.parse(getStorage());
+    
+    if (groceries.length > 0) {
+        groceries.forEach(item => addItemToGroceryList(item));
+    }
+}
+
 function addItemToGroceryList(item) {
     let itemToAdd = createElementBasedOnTagName('li');
     addClassesToElement(itemToAdd, 'item');
@@ -123,6 +131,7 @@ function getStorage() {
     return groceries;
 }
 
+addEventListener('DOMContentLoaded', populateDOMFromStorage);
 addItemButton.addEventListener('click', addItemToDOM);
 clearAllButton.addEventListener('click', removeAllGroceryItemsFromDOM);
 groceryList.addEventListener('click', removeGroceryItemFromDOM);

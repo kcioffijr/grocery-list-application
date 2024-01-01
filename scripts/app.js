@@ -44,7 +44,7 @@ function createItemForGroceryList(groceryItem) {
     let itemToAdd = createElementBasedOnTagName('li');
     addClassesToElement(itemToAdd, 'item');
     itemToAdd.appendChild(document.createTextNode(groceryItem));
-    itemToAdd.appendChild(createButton());
+    itemToAdd.appendChild(createDeleteButtonForGroceryItem());
     return itemToAdd;
 }
 
@@ -53,7 +53,8 @@ function createElementBasedOnTagName(tagName) {
 }
 
 /**
- * 
+ * Takes an element with a list of classes that \
+ * need to be applied to it.
  * @param {HTMLElement} element 
  * @param  {...string} classes 
  * @returns 
@@ -74,7 +75,7 @@ function addClassesToElement(element, ...classes) {
     element.classList.add(...classes);
 }
 
-function createButton() {
+function createDeleteButtonForGroceryItem() {
     let deleteButton = createElementBasedOnTagName('span');
     addClassesToElement(deleteButton, 'remove-item', 'fa-solid', 'fa-x');
     deleteButton.setAttribute('id', 'x');

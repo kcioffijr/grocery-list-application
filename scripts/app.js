@@ -92,11 +92,11 @@ function removeAllGroceryItemsFromDOM() {
 }
 
 function removeGroceryItemFromDOM(event) {
-    let groceryItem = event.target;
+    let groceryItem = event.target; //button element
     if (groceryItem.classList.contains('remove-item')) {
-        const itemTile = groceryItem.parentElement;
+        const itemTile = groceryItem.parentElement; // removes the actual item 'tile' 
         removeItem(itemTile);
-        updateUI();
+        adjustUIBasedOnGroceryItemCount();
     }
 }
 

@@ -52,6 +52,12 @@ function createElementBasedOnTagName(tagName) {
     return document.createElement(tagName);
 }
 
+/**
+ * 
+ * @param {HTMLElement} element 
+ * @param  {...string} classes 
+ * @returns 
+ */
 function addClassesToElement(element, ...classes) {
     if (!element instanceof HTMLElement) {
         console.error('Invalid element provided.');

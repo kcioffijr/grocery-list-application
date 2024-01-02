@@ -86,6 +86,7 @@ function removeAllGroceryItemsFromDOM() {
     if (confirm('You are about to remove all items from your grocery list, continue?')) {
         while (groceryList.firstChild) {
             groceryList.removeChild(groceryList.firstChild);
+            localStorage.setItem('groceries', JSON.stringify([]));
         }
         adjustUIBasedOnGroceryItemCount();
     }

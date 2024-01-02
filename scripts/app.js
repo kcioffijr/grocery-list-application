@@ -105,7 +105,7 @@ function removeGroceryItemNameFromStorage(itemName) {
     let groceries = JSON.parse(retrieveGroceriesFromStorage());
     const updatedGroceries = groceries.filter(item => item !== itemName);
 
-    localStorage.setItem('groceries', updatedGroceries);
+    localStorage.setItem('groceries', JSON.stringify(updatedGroceries));
 }
 
 /**
@@ -158,13 +158,13 @@ function saveGroceryItemInStorage(groceryName) {
 }
 
 function retrieveGroceriesFromStorage() {
-    let groceries = localStorage.getItem('groceries');
-
-    if (groceries === null) {
-        groceries = JSON.stringify([]);
+    const storedGroceries = localStorage.getItem('groceries');
+    
+    if (storedGroceries && storedGroceries.length > 0) {
+        return storedGroceries;
+    } else {
+        return JSON.stringify([]);
     }
-
-    return groceries;
 }
 
 addEventListener('DOMContentLoaded', populateDOMWithStorage);

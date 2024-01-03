@@ -1,3 +1,5 @@
+import './styles.css';
+
 const groceryList = document.getElementById('items');
 const itemToBeAdded = document.getElementById('add-item');
 const addItemButton = document.getElementById('add-item-btn');

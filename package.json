@@ -4,8 +4,8 @@
   "description": "A simple digital grocery list application",
   "private": true,
   "scripts": {
-    "build": "",
-    "start": ""
+    "build": "webpack",
+    "start": "serve dist"
   },
   "author": "Cioffi, Kevin",
   "license": "ISC",

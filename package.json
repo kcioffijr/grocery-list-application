@@ -1,0 +1,11 @@
+{
+  "name": "grocery-list",
+  "version": "2.0.0",
+  "description": "A simple digital grocery list application",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Cioffi, Kevin",
+  "license": "ISC"
+}

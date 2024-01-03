@@ -1,5 +1,7 @@
 import './styles.css';
+import picture from './images/grocery_logo.svg';
 
+const logo = document.getElementById('logo');
 const groceryList = document.getElementById('items');
 const itemToBeAdded = document.getElementById('add-item');
 const addItemButton = document.getElementById('add-item-btn');
@@ -170,6 +172,7 @@ function retrieveGroceriesFromStorage() {
     }
 }
 
+logo.src = picture;
 addEventListener('DOMContentLoaded', populateDOMWithStorage);
 addItemButton.addEventListener('click', addItemToDOM);
 clearAllButton.addEventListener('click', removeAllGroceryItemsFromDOM);
